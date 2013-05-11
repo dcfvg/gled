@@ -1,0 +1,20 @@
+# glisser-editer
+
+# USAGE: glisser-editer 
+# 
+
+content="/Users/benoit/Dropbox/glisser-editer"
+
+for doc in `find $content/inbox -iname "*.jpg" -type f | xargs ls -rt`
+do
+  
+  box=$(basename $(dirname $doc))
+  doc=$(basename $doc)
+  
+  blin=${box:0:1}
+  bcol=${box:1:1}
+  
+  echo "$box > $doc"
+  echo "$box : $blin - $bcol"
+
+done
