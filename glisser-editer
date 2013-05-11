@@ -3,18 +3,31 @@
 # USAGE: glisser-editer 
 # 
 
+docw="2480"
+doch="3508"
+docsize=$docw"x"$doch
+
+
 content="/Users/benoit/Dropbox/glisser-editer"
 
-for doc in `find $content/inbox -iname "*.jpg" -type f | xargs ls -rt`
+for pdoc in `find $content/inbox -iname "*.jpg" -type f | xargs ls -rt`
 do
   
-  box=$(basename $(dirname $doc))
-  doc=$(basename $doc)
+  box=$(basename $(dirname $pdoc))
+  doc=$(basename $pdoc)
   
   blin=${box:0:1}
-  bcol=${box:1:1}
+  bcol=${box:2:1}
+    
+  filemtime=$(perl -MPOSIX -le 'print strftime "%s",localtime ((stat $ARGV[0])[9])' $pdoc)
+  
   
   echo "$box > $doc"
-  echo "$box : $blin - $bcol"
-
+  echo "$box : $blin - $bcol $filemtime"
+  
+  # resize images
+  
+  docarchive="$content/archive/$filemtime.$blin-$bcol.$doc"
+  convert -format jpg -resize $docsize -extent $docsize $pdoc $docarchive
+  
 done
