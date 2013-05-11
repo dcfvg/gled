@@ -8,7 +8,7 @@ content="/Users/benoit/Dropbox/glisser-editer"
 docw=2480
 doch=3508
 docsize=$docw"x"$doch
-last="$content/step/white.jpg"
+last="$content/step/last.jpg"
 
 parchive="$content/archive"
 pinbox="$content/inbox"
@@ -16,7 +16,7 @@ pprint="$content/print"
 pstep="$content/step"
 ptrash="$content/trash"
 
-for pdoc in `find $pinbox -iname "*.jpg" -type f | xargs ls -rt`
+for pdoc in `find $pinbox \( -iname \*.png -o  -iname \*.pdf -o -iname \*.jpg \) -type f | xargs ls -rt`
 do
   
   box=$(basename $(dirname $pdoc))
@@ -24,12 +24,10 @@ do
   
   blin=${box:0:1}
   bcol=${box:2:1}
-    
+  
+  echo "$blin:$bcol ($doc)"
+  
   filemtime=$(perl -MPOSIX -le 'print strftime "%s",localtime ((stat $ARGV[0])[9])' $pdoc)
-  
-  
-  echo "$box > $doc"
-  echo "$box : $blin - $bcol $filemtime"
   
   # resize and archive documents
   
@@ -38,11 +36,17 @@ do
   
   step="$pstep/$filemtime.jpg"
 
-  composite $docarchive -geometry "+$((docw*bcol))+$((doch*blin))" $last $step
+  composite $pdocarchive -geometry "+$((docw*bcol))+$((doch*blin))" $last $step
   
   
   mv $pdoc "$ptrash/$box/$doc"
   rm $last
   cp $step $last
+  
+  pprintpdf="$pprint/all/$filemtime.pdf"
+  convert -format pdf $step "$pprint/all/$filemtime.pdf"
+  
+  cp $pprintpdf "$pprint/benoit/$filemtime.pdf"
+  cp $pprintpdf "$pprint/tanguy/$filemtime.pdf"
   
 done
