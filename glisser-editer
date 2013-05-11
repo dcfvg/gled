@@ -3,12 +3,12 @@
 # USAGE: glisser-editer 
 # 
 
-docw="2480"
-doch="3508"
-docsize=$docw"x"$doch
-
-
 content="/Users/benoit/Dropbox/glisser-editer"
+
+docw=2480
+doch=3508
+docsize=$docw"x"$doch
+last="$content/step/last.jpg"
 
 for pdoc in `find $content/inbox -iname "*.jpg" -type f | xargs ls -rt`
 do
@@ -25,9 +25,16 @@ do
   echo "$box > $doc"
   echo "$box : $blin - $bcol $filemtime"
   
-  # resize images
+  # resize and archive documents
   
   docarchive="$content/archive/$filemtime.$blin-$bcol.$doc"
   convert -format jpg -resize $docsize -extent $docsize $pdoc $docarchive
+  
+  step="$content/step/$filemtime.jpg"
+
+  composite $docarchive -geometry "+$((docw*bcol))+$((doch*blin))" $last $step
+  
+  rm $last
+  cp $step $last
   
 done
