@@ -32,12 +32,17 @@ do
   # resize and archive documents
   
   pdocarchive="$parchive/$filemtime.$blin-$bcol.$doc"
-  convert -format jpg -resize $docsize -extent $docsize $pdoc $pdocarchive
+  convert -format jpg -resize $docsize -extent $docsize $pdoc \
+  -gravity south \
+  -stroke '#000C' -strokewidth 2 -annotate 0 "$blin:$bcol ($doc)" \
+  -stroke  none   -fill white    -annotate 0 "$blin:$bcol ($doc)" \
+  $pdocarchive
   
   step="$pstep/$filemtime.jpg"
 
   composite $pdocarchive -geometry "+$((docw*bcol))+$((doch*blin))" $last $step
   
+  open $step
   
   mv $pdoc "$ptrash/$box/$doc"
   rm $last
