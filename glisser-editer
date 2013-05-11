@@ -8,9 +8,15 @@ content="/Users/benoit/Dropbox/glisser-editer"
 docw=2480
 doch=3508
 docsize=$docw"x"$doch
-last="$content/step/last.jpg"
+last="$content/step/white.jpg"
 
-for pdoc in `find $content/inbox -iname "*.jpg" -type f | xargs ls -rt`
+parchive="$content/archive"
+pinbox="$content/inbox"
+pprint="$content/print"
+pstep="$content/step"
+ptrash="$content/trash"
+
+for pdoc in `find $pinbox -iname "*.jpg" -type f | xargs ls -rt`
 do
   
   box=$(basename $(dirname $pdoc))
@@ -27,13 +33,15 @@ do
   
   # resize and archive documents
   
-  docarchive="$content/archive/$filemtime.$blin-$bcol.$doc"
-  convert -format jpg -resize $docsize -extent $docsize $pdoc $docarchive
+  pdocarchive="$parchive/$filemtime.$blin-$bcol.$doc"
+  convert -format jpg -resize $docsize -extent $docsize $pdoc $pdocarchive
   
-  step="$content/step/$filemtime.jpg"
+  step="$pstep/$filemtime.jpg"
 
   composite $docarchive -geometry "+$((docw*bcol))+$((doch*blin))" $last $step
   
+  
+  mv $pdoc "$ptrash/$box/$doc"
   rm $last
   cp $step $last
   
