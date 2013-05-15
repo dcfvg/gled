@@ -55,7 +55,7 @@ do
   convert -format pdf $step $pprintpdf
   
   # copy printable version for every printers
-  for printers in `find $pprint -type d 
+  for printers in `find $pprint -type d`
   do
     cp $pprintpdf "$printers/$filemtime.pdf"  
   done
