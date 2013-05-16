@@ -1,6 +1,11 @@
 #!/bin/bash
 
+# USAGE: gled-loop frequence
+
+
 while true; do
+    gled
+    
     for (( i=$1; i>0; i--)); do
       sleep 1 &
       printf "Lanch gled in $i s \r"
@@ -8,6 +13,4 @@ while true; do
     done
 
     printf "              \r"
-    
-    gled
 done
