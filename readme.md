@@ -2,6 +2,13 @@
 
 Un système de conversation par affichage synchronisé.
 
+# depedencies
+
+detox
+imagemagick
+perl
+jpegoptim
+
 # proposition de noms 
 
 Talk talk
