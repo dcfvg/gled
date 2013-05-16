@@ -1,0 +1,45 @@
+#!/bin/bash
+
+docw=2480 # docsize
+doch=3508 # A4 - 300dpi = 2480x3508
+
+folders=( archives inbox printers steps trash )
+printers=( all 116 conciergerie tanguy )
+
+rm -r $1 # dev only
+mkdir $1
+
+# create main folders
+for folder in ${folders[@]} 
+do
+  path=$1"/"$folder
+  echo "create $path"
+  mkdir $path
+done
+
+# create printers
+for printer in ${printers[@]} 
+do
+  path=$1"/printers/"$printer
+  echo "create $path"
+  mkdir $path
+done
+
+# create boxes 
+for (( x = 0 ; x < $2 ; x++ )) 
+do  
+  for (( y = 0 ; y < $3 ; y++ ))
+  do
+    echo "create box $x-$y"
+    mkdir $1"/inbox/"$x"-"$y
+    randomblob -o $docw -i $doch -s disk -k gaussian -S $(( $x+1 * $y+1)) $1"/inbox/"$x"-"$y"/blob.jpg"
+    
+    mkdir $1"/trash/"$x"-"$y
+  done
+done
+
+# create base image
+convert -size $docw"x"$doch xc:white $1"/steps/last.pdf"
+convert -size $docw"x"$doch xc:white $1"/steps/last.jpg"
+
+open $1
