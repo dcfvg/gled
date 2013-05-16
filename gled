@@ -3,9 +3,7 @@
 # glisser-editer
 # USAGE: glisser-editer
 
-echo $RANDOM
-clear
-
+# clear
 # set -x
 
 function gledUpdate {
@@ -69,7 +67,7 @@ function gledUpdate {
     # copy printable version for every printers
     for printer in `find $printers -type d`
     do
-      echo "add to queue : $( basename $printer) "
+      #echo "add to queue : $( basename $printer) "
       cp $pdf "$printer/$now.pdf"  
     done
     
@@ -77,13 +75,12 @@ function gledUpdate {
   
   done
 }
-##gled-init gled-img-1 2 4
-
-gled-init gled-img-2 4 2
+#gled-init gled-img-2 4 2
 
 for poster in `find $(pwd) -name "gled*" -type d`
 do
   gledUpdate $poster
 done
 
-echo "all box was updated"
+echo $(date +"%y/%m/%d @ %k:%M:%S")
+echo "updated !"
