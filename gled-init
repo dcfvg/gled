@@ -36,7 +36,7 @@ do
     mkdir $1"/inbox/"$x"-"$y
     #randomblob -o $docw -i $doch -s disk -k gaussian -S $(( $x+1 * $y+1)) $1"/inbox/"$x"-"$y"/blob.jpg"
     
-    convert -size $docw"x"$doch -background royalblue \
+    convert -size $docw"x"$doch -background salmon \
             -pointsize 250 -fill white -gravity center label:"box $x-$y" $1"/inbox/$x-$y/$x-$y-test.jpg"
     
     mkdir $1"/trash/"$x"-"$y
