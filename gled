@@ -22,6 +22,7 @@ function gledUpdate {
   steps="$content/steps"        # every steps of the image in jpegs
   trash="$content/trash"        # an incremental clone of the inbox
   last="$steps/last.jpg"        # the current wall state
+  lastweb="$steps/last.web.jpg"  
 
   for doc in `find $inbox \( -iname \*.png -o  -iname \*.pdf -o -iname \*.jpg \) -type f | xargs ls -rt`
   do
@@ -60,7 +61,10 @@ function gledUpdate {
   
     # update last step
     rm $last
+    rm $lastweb
     cp $step $last
+    
+    convert -resize 35% $last $lastweb
   
     # generate printable version (pdf)
     pdf="$printers/$now-$filetime.$docname.temp.pdf"
