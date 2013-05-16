@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# USAGE: gled-init dirname wbox hbox
+
 # set -x
 
 docw=3508                    # docsize
