@@ -64,7 +64,7 @@ function gledUpdate {
   
     # generate printable version (pdf)
     pdf="$printers/$now-$filetime.$docname.temp.pdf"
-    convert -format pdf $step $pdf
+    convert -format pdf $archive"/"$archiveName $pdf
   
     # copy printable version for every printers
     for printer in `find $printers -type d`
