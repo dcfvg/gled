@@ -45,10 +45,10 @@ function gledUpdate {
   
     archiveName="$now-$filetime.$ybox-$xbox.$docname" #name of the archive file
   
-    convert -format jpg -resize $docw"x"$doch -extent $docw"x"$doch $doc \
+    convert -format jpg -gravity center -resize $docw"x"$doch -extent $docw"x"$doch $doc \
     -gravity north -geometry +0+500 -pointsize 30 \
-    -stroke '#000' -strokewidth 2 -annotate 0 "$ybox:$xbox [$docname] @$filetimehuman" \
-    -stroke  none   -fill white    -annotate 0 "$ybox:$xbox [$docname] @$filetimehuman" \
+    -stroke '#fff' -strokewidth 3 -annotate 0 "$ybox:$xbox [${docname:0:50}] @$filetimehuman" \
+    -stroke none   -fill blue    -annotate 0 "$ybox:$xbox [${docname:0:50}] @$filetimehuman" \
     $archive"/"$archiveName
   
     # add current contribution to last step
@@ -77,7 +77,7 @@ function gledUpdate {
   
   done
 }
-gled-init gled-img-2 4 2
+#gled-init gled-img-2 4 2
 
 for poster in `find $(pwd) -name "gled*" -type d`
 do
