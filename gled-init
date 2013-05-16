@@ -1,10 +1,12 @@
 #!/bin/bash
 
-docw=2480 # docsize
-doch=3508 # A4 - 300dpi = 2480x3508
+# set -x
+
+docw=3508                    # docsize
+doch=2480                    # A4 - 300dpi = 2480x3508
 
 folders=( archives inbox printers steps trash )
-printers=( all 116 conciergerie tanguy )
+printers=( 116 conciergerie tanguy )
 
 rm -r $1 # dev only
 mkdir $1
@@ -26,20 +28,22 @@ do
 done
 
 # create boxes 
-for (( x = 0 ; x < $2 ; x++ )) 
+for (( x = 0 ; x < $(( $2 - 0 )) ; x++ )) 
 do  
-  for (( y = 0 ; y < $3 ; y++ ))
+  for (( y = 0 ; y < $(( $3 + 0 )) ; y++ ))
   do
     echo "create box $x-$y"
     mkdir $1"/inbox/"$x"-"$y
-    randomblob -o $docw -i $doch -s disk -k gaussian -S $(( $x+1 * $y+1)) $1"/inbox/"$x"-"$y"/blob.jpg"
+    #randomblob -o $docw -i $doch -s disk -k gaussian -S $(( $x+1 * $y+1)) $1"/inbox/"$x"-"$y"/blob.jpg"
+    
+    convert -size $docw"x"$doch -background royalblue \
+            -pointsize 250 -fill white -gravity center label:"box $x-$y" $1"/inbox/$x-$y/$x-$y-test.jpg"
     
     mkdir $1"/trash/"$x"-"$y
   done
 done
 
 # create base image
-convert -size $docw"x"$doch xc:white $1"/steps/last.pdf"
-convert -size $docw"x"$doch xc:white $1"/steps/last.jpg"
+convert -size $(( $docw * $3 ))"x"$(( $doch * $2 )) xc:white $1"/steps/last.jpg"
 
 open $1
