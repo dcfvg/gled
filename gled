@@ -38,12 +38,12 @@ function gledUpdate {
     filetime=$(perl -MPOSIX -le 'print strftime "%s",localtime ((stat $ARGV[0])[9])' $doc)
     filetimehuman=$(perl -MPOSIX -le 'print strftime "%d/%m/%Y %H:%M",localtime ((stat $ARGV[0])[9])' $doc)
     
-    now=$(date +"%y.%m.%d-%k.%M.%S")
+    now=$(date +"%y.%m.%d-%H.%M.%S")
     echo "$ybox:$xbox ($docname) @$filetimehuman"
     
     # resize and archive
   
-    archiveName="$now-$filetime.$ybox-$xbox.$docname" #name of the archive file
+    archiveName="$now-$filetime.$ybox-$xbox.$docname.jpg" #name of the archive file
   
     convert -format jpg -gravity center -resize $docw"x"$doch -extent $docw"x"$doch $doc \
     -gravity north -geometry +0+500 -pointsize 30 \
