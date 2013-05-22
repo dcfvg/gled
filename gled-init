@@ -2,30 +2,32 @@
 # USAGE: gled-init [-l lines] [-c columns] [-w sheet widht in px] [-h sheet height in px] [-d debug] [dirname]
 # ex : gled-init -l 4 -c 4 -h 1240 -w 1754 test -d 1
 
+
 l=2                        # l - lines of sheets
 c=2                        # c - columns of sheets
 w=3508                     # docsize
 h=2480                     # A4 - 300dpi = 2480x3508
 
 folders=( archives inbox printers steps trash )
-printers=( 116 conciergerie tanguy )
-dir=gled.start
+printers=( 116 conciergerie tanguy g-u-i)
+dir=gled.new
 
-while [ $# -gt 0 ]
-	do
-	# get parameters
-	case "$1" in
-		-d) shift; set -x;clear ;;
-		-l) shift; l=$1;;
-		-c) shift; c=$1;;
-		-w) shift; w=$1;;
-		-h) shift; h=$1;;
-		 -) break ;;                           # STDIN and end of arguments
-		-*) errMsg "--- UNKNOWN OPTION ---";;  # any other - argument
-		*) break ;;                            # end of arguments 
-	esac
-	shift   # next option
-done
+
+while [ $# -gt 0 ]         # get options
+do
+  	# get parameters
+  	case "$1" in
+  		-d) shift; set -x;clear ;;
+  		-l) shift; l=$1;;
+  		-c) shift; c=$1;;
+  		-w) shift; w=$1;;
+  		-h) shift; h=$1;;
+  		 -) break ;;                           # STDIN and end of arguments
+  		-*) errMsg "--- UNKNOWN OPTION ---";;  # any other - argument
+  		*) break ;;                            # end of arguments 
+  	esac
+  	shift                                    # next option
+  done
 
 dir=$1
 rm -r $dir # dev only
