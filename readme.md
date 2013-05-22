@@ -9,6 +9,19 @@ imagemagick
 perl
 jpegoptim
 
+# TODO 
+
+- notification 
+- réduire la résolution
+- gestion des pdf
+
++ site 
+	- image en cours 
+	- historique 
+	- consigne 
+	- qui participe
+
+
 # proposition de noms 
 
 Talk talk
