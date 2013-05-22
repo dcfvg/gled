@@ -1,22 +1,40 @@
 #!/bin/bash
+# USAGE: gled-init [-l lines] [-c columns] [-w sheet widht in px] [-h sheet height in px] [-d debug] [dirname]
+# ex : gled-init -l 4 -c 4 -h 1240 -w 1754 test -d 1
 
-# USAGE: gled-init dirname wbox hbox
-
-# set -x
-
-docw=3508                    # docsize
-doch=2480                    # A4 - 300dpi = 2480x3508
+l=2                        # l - lines of sheets
+c=2                        # c - columns of sheets
+w=3508                     # docsize
+h=2480                     # A4 - 300dpi = 2480x3508
 
 folders=( archives inbox printers steps trash )
 printers=( 116 conciergerie tanguy )
+dir=gled.start
 
-rm -r $1 # dev only
-mkdir $1
+while [ $# -gt 0 ]
+	do
+	# get parameters
+	case "$1" in
+		-d) shift; set -x;clear ;;
+		-l) shift; l=$1;;
+		-c) shift; c=$1;;
+		-w) shift; w=$1;;
+		-h) shift; h=$1;;
+		 -) break ;;                           # STDIN and end of arguments
+		-*) errMsg "--- UNKNOWN OPTION ---";;  # any other - argument
+		*) break ;;                            # end of arguments 
+	esac
+	shift   # next option
+done
+
+dir=$1
+rm -r $dir # dev only
+mkdir $dir
 
 # create main folders
 for folder in ${folders[@]} 
 do
-  path=$1"/"$folder
+  path=$dir"/"$folder
   echo "create $path"
   mkdir $path
 done
@@ -24,28 +42,29 @@ done
 # create printers
 for printer in ${printers[@]} 
 do
-  path=$1"/printers/"$printer
+  path=$dir"/printers/"$printer
   echo "create $path"
   mkdir $path
 done
 
 # create boxes 
-for (( x = 0 ; x < $(( $2 - 0 )) ; x++ )) 
+for (( x = 0 ; x < $(( $l - 0 )) ; x++ )) 
 do  
-  for (( y = 0 ; y < $(( $3 + 0 )) ; y++ ))
+  for (( y = 0 ; y < $(( $c + 0 )) ; y++ ))
   do
     echo "create box $x-$y"
-    mkdir $1"/inbox/"$x"-"$y
-    #randomblob -o $docw -i $doch -s disk -k gaussian -S $(( $x+1 * $y+1)) $1"/inbox/"$x"-"$y"/blob.jpg"
+    mkdir $dir"/inbox/"$x"-"$y
+    #randomblob -o $w -i $h -s disk -k gaussian -S $(( $x+1 * $y+1)) $dir"/inbox/"$x"-"$y"/blob.jpg"
     
-    convert -size $docw"x"$doch -background salmon \
-            -pointsize 250 -fill white -gravity center label:"box $x-$y" $1"/inbox/$x-$y/$x-$y-test.jpg"
+    convert -size $w"x"$h -background white \
+            -pointsize 250 -font Courier -fill salmon -gravity center \
+            label:"$x~$y" $dir"/inbox/$x-$y/$x-$y-test.jpg"
     
-    mkdir $1"/trash/"$x"-"$y
+    mkdir $dir"/trash/"$x"-"$y
   done
 done
 
 # create base image
-convert -size $(( $docw * $3 ))"x"$(( $doch * $2 )) xc:white $1"/steps/last.jpg"
+convert -size $(( $w * $c ))"x"$(( $h * $c )) xc:white $dir"/steps/last.jpg"
 
-open $1
+open $dir
