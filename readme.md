@@ -11,74 +11,14 @@ jpegoptim
 
 # TODO 
 
-- notification 
-- réduire la résolution
-- gestion des pdf
+- notification ( php )
+- gestion des participation en pdf
+- cadrage pleine page  
 
 + site 
-	- image en cours 
-	- historique 
-	- consigne 
+	- image en cours
+	- historique
+	- consigne
 	- qui participe
-
-
-# proposition de noms 
-
-Talk talk
-
-Talking heads
-Talking box
-
-dossier patagé
-CCI
-Toi plus moi plus nous
-huit A4 et une boite de dépot
-
-A4talk tm
-the name of the project
-contry 
-
-display
-conversation publié
-
-talki-wiki
-
-talki-wally
-
-glisserpublier
-glisserimprimer
-glisserdiscuter
-glisserparler
-glisserdire
-
-glisséédité
-
-glisser-editer
-
-glisser déplacer
-
-déposer - publier
-déposer editer
-
-en place - coller en place
-
-glisser en place
-
-replacer / remplacer 
-rechercher remplacer
-
-remplacer replacer
-
-glisser remplacer
-
-
-drag&drop
-
-drop & publish
-drop & 
-
-déplacer - discuter
-
-rvb = xyz 
-
-p   = layer
+	
+http://doc.ubuntu-fr.org/tutoriel/comment_transformer_un_programme_en_service
