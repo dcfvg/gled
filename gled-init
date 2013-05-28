@@ -2,7 +2,6 @@
 # USAGE: gled-init [-l lines] [-c columns] [-w sheet widht in px] [-h sheet height in px] [-d debug] [dirname]
 # ex : gled-init -l 4 -c 4 -h 1240 -w 1754 test -d 1
 
-
 l=2                        # l - lines of sheets
 c=2                        # c - columns of sheets
 w=3508                     # docsize
@@ -11,7 +10,6 @@ h=2480                     # A4 - 300dpi = 2480x3508
 folders=( archives inbox printers steps trash )
 printers=( 116 conciergerie tanguy g-u-i)
 dir=gled.new
-
 
 while [ $# -gt 0 ]         # get options
 do
@@ -27,7 +25,7 @@ do
   		*) break ;;                            # end of arguments 
   	esac
   	shift                                    # next option
-  done
+done
 
 dir=$1
 rm -r $dir # dev only

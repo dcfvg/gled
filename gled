@@ -13,8 +13,8 @@ function gledUpdate {
   
   detox -r $content
   
-  docw=1240                    # docsize
-  doch=1754                    # A4 - 300dpi = 2480x3508 | 150 dpi = 2480x3508
+  docw=1240                     # docsize
+  doch=1754                     # A4 - 300dpi = 2480x3508 | 150 dpi = 2480x3508
 
   archive="$content/archives"   # keeping all submission ordered by date
   inbox="$content/inbox"        # where the new files are uploaded

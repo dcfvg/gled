@@ -1,7 +1,5 @@
 #!/bin/bash
-
 # USAGE: gled-loop frequence
-
 
 while true; do
     gled
