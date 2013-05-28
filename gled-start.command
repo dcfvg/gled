@@ -7,4 +7,4 @@ cd $(dirname $0)
 git pull
 
 cd ~/Dropbox/dcfvg-gled/
-gled-loop 60
+gled-loop 10
