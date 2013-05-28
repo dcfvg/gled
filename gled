@@ -24,7 +24,7 @@ function gledUpdate {
   last="$steps/last.jpg"        # the current wall state
   lastweb="$steps/last.web.jpg" # web version of the current state
 
-  for doc in `find $inbox \( -iname \*.png -o  -iname \*.pdf -o -iname \*.jpg -o -iname \*.gif \) -type f | xargs ls -rt`
+  for doc in `find $inbox \( -iname \*.png -o -iname \*.jpg -o -iname \*.jpeg -o -iname \*.gif \) -type f | xargs ls -rt`
   do
     
     box=$(basename $(dirname $doc))   # contribution path
