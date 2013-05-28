@@ -59,7 +59,6 @@ function gledUpdate {
     composite $archive"/"$archiveName -geometry "+$((docw*xbox))+$((doch*ybox))" $last $step
   
     # move form inbox to trash
-    mv $doc "$trash/$box/$docName"
   
     # step optim
     jpegoptim $step
@@ -83,6 +82,7 @@ function gledUpdate {
     done
     
     rm $pdf
+    mv $doc "$trash/$box/$docName"
   
   done
 }
