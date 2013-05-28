@@ -11,7 +11,7 @@ function gledUpdate {
   content=$1
   echo "processing "$content
   
-  detox -vr $content
+  detox -r $content
   
   docw=1240                    # docsize
   doch=1754                    # A4 - 300dpi = 2480x3508 | 150 dpi = 2480x3508
