@@ -59,7 +59,7 @@ do
     #randomblob -o $w -i $h -s disk -k gaussian -S $(( $x+1 * $y+1)) $dir"/inbox/"$x"-"$y"/blob.jpg"
     
     convert -size $w"x"$h -background white \
-            -pointsize 250 -font Courier -fill salmon -gravity center \
+            -pointsize 250 -fill salmon -gravity center \
             label:"$x~$y" $dir"/inbox/$x-$y/$x-$y-test.jpg"
     
     mkdir $dir"/trash/"$x"-"$y
@@ -68,5 +68,6 @@ done
 
 # create base image
 convert -size $(( $w * $c ))"x"$(( $h * $c )) xc:white $dir"/steps/last.jpg"
+cp $dir"/steps/last.jpg" $dir"/steps/last.web.jpg"
 
 open $dir
