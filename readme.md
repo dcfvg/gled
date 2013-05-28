@@ -8,6 +8,7 @@ detox
 imagemagick
 perl
 jpegoptim
+git
 
 # TODO 
 
