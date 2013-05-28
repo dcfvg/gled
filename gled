@@ -85,7 +85,8 @@ function gledUpdate {
   
   done
 }
-#gled-init gled-img-2 4 2
+
+#gled-init -l 4 -c 4 -h 1240 -w 1754 "gled.test"
 
 for poster in `find $(pwd) -name "gled*" -type d`
 do
