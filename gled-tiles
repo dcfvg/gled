@@ -1,0 +1,10 @@
+#!/bin/bash
+# USAGE: gled-tiles filed 
+
+rm -r tiles
+mkdir tiles 
+
+w=1240                     # docsize
+h=1754                     # A4 - 300dpi = 2480x3508 | 150 dpi = 2480x3508
+
+convert -crop $w^"x"$h^ -background white -extent $w"x"$h $1 tiles/%03d.png
