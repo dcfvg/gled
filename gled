@@ -38,7 +38,7 @@ function gledUpdate {
     filetimehuman=$(perl -MPOSIX -le 'print strftime "%d/%m/%Y %H:%M",localtime ((stat $ARGV[0])[9])' $doc)
     
     now=$(date +"%y.%m.%d-%H.%M.%S")
-    echo "$ybox:$xbox ($docname) @$filetimehuman"
+    printf "\n| $ybox:$xbox | $filetimehuman | $docname\n\n"
     
     # resize and archive
   
