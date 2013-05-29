@@ -9,6 +9,7 @@ imagemagick
 perl
 jpegoptim
 git
+imagesnap	video capture
 
 # TODO 
 
