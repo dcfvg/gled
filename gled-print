@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#clear
+#set -x
+
+function print {
+  dir=$1
+  
+  printer=C224e_Labos                    # labos
+  #printer=HP_LaserJet_CP1525nw__3F0AFD_ # hp116
+  filetype="pdf"
+    
+  now=$(date +"%y.%m.%d-%H.%M.%S")
+  # screencapture -m ~/Desktop/captures/$now.png
+  
+  for step in `find $dir -iname "*pdf" -type f | xargs ls -rt`
+  do    
+    lpr -P $printer -o media=A4 -o fit-to-page $step
+    echo "print $(basename $step)"
+    rm $step
+  done
+
+  echo "print file updated"
+}
+
+print ~/Dropbox/dcfvg-gled/gled.conciergerie/printers/conciergerie
