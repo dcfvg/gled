@@ -6,8 +6,10 @@
 function print {
   dir=$1
   
-  printer=C224e_Labos                    # labos
+  #printer=C224e_Labos                    # labos
   #printer=HP_LaserJet_CP1525nw__3F0AFD_ # hp116
+  printer=Samsung_CLP_360_Series__SEC001599DAF394_
+
   filetype="pdf"
     
   now=$(date +"%y.%m.%d-%H.%M.%S")
