@@ -40,6 +40,8 @@ function gledUpdate {
     now=$(date +"%y.%m.%d-%H.%M.%S")
     printf "\n| $ybox:$xbox | $filetimehuman | $docname\n\n"
     
+    previous=$steps"/"$(ls $steps | sort -nr | head -1)
+    
     # resize and archive
   
     archiveName="$now-$filetime.$ybox-$xbox.$docname.jpg" #name of the archive file
@@ -56,7 +58,7 @@ function gledUpdate {
     
     # add current contribution to last step
     step="$steps/$now-$filetime.$docname.jpg"
-    composite $archive"/"$archiveName -geometry "+$((docw*xbox))+$((doch*ybox))" $last $step
+    composite $archive"/"$archiveName -geometry "+$((docw*xbox))+$((doch*ybox))" $previous $step
   
     # move form inbox to trash
   
