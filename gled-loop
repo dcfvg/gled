@@ -13,11 +13,17 @@ while true; do
       printf "Lanch gled in $i s \r"
       wait
     done
+    
+    
+    # video capture 
     imagesnap $capturepath/$capture.jpg
-	jpegoptim $capturepath/$capture.jpg
+	  jpegoptim $capturepath/$capture.jpg
 	
     rm $capturepath/live.jpg
     cp $capturepath/$capture.jpg $capturepath/live.jpg
+    
+    # print file
+    gled-print ~/Dropbox/dcfvg-gled/gled.conciergerie/printers/conciergerie
     
     printf "              \r"
 done
