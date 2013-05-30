@@ -46,7 +46,7 @@ function gledUpdate {
   
     archiveName="$now-$filetime.$ybox-$xbox.$docname.jpg" #name of the archive file
   
-    convert -format jpg -auto-orient -gravity center -resize $docw"x"$doch^ -gravity center -extent $docw"x"$doch $doc \
+    convert -format jpg -auto-orient -gravity center -resize $docw"x"$doch^ -gravity center -extent $docw"x"$doch -density 100x100 $doc \
     -pointsize 35 -undercolor '#fff' -fill Black \
     -gravity north -annotate +0+35 " $ybox - $xbox " \
 	-pointsize 15 \
