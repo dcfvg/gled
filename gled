@@ -68,7 +68,7 @@ function gledUpdate {
     rm $lastweb
     cp $step $last
     
-    convert -resize 35% $last $lastweb
+    convert -resize 25% $last $lastweb
   
     # generate printable version (pdf)
     pdf="$printers/$now-$filetime.$docname.temp.pdf"
