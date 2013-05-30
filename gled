@@ -87,7 +87,7 @@ function gledUpdate {
   done
 }
 
-#gled-init -l 4 -c 4 -h 1240 -w 1754 "gled.test"
+#gled-init -l 4 -c 4 -w 1240 -h 1754 "gled.conciergerie"
 
 for poster in `find $(pwd) -name "gled*" -type d`
 do
