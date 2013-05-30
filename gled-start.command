@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep 60
+# sleep 60
 
 echo "pull source code from remote"
 cd $(dirname $0)
