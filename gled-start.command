@@ -18,4 +18,4 @@ rm ~/Dropbox/gled-conciergerie/last.jpg
 ln -s ~/Dropbox/dcfvg-gled/gled.conciergerie/steps/last.jpg /Users/conciergerie/Dropbox/gled-conciergerie/
 
 cd ~/Dropbox/dcfvg-gled/
-gled-loop 10
+gled-loop 30
