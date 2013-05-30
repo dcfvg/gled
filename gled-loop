@@ -13,12 +13,12 @@ while true; do
       printf "Lanch gled in $i s \r"
       wait
     done
-    imagesnap $capturepath/$capture.png
-	  pngcrush -q $capturepath/$capture.png $capturepath/$capture.crush.png
+    imagesnap $capturepath/$capture.jpg
+	  pngcrush -q $capturepath/$capture.jpg $capturepath/$capture.crush.jpg
 	
-	  rm $capturepath/$capture.png
-    rm $capturepath/live.png
-    cp $capturepath/$capture.crush.png $capturepath/live.png
+	  rm $capturepath/$capture.jpg
+    rm $capturepath/live.jpg
+    cp $capturepath/$capture.crush.jpg $capturepath/live.jpg
     
     printf "              \r"
 done
