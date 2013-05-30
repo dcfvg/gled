@@ -14,8 +14,11 @@ while true; do
       wait
     done
     imagesnap $capturepath/$capture.png
+	pngcrush -q $capturepath/$capture.png $capturepath/$capture.crush.png
+	
+	rm $capturepath/$capture.png
     rm $capturepath/live.png
-    cp $capturepath/$capture.png $capturepath/live.png
+    cp $capturepath/$capture.crush.png $capturepath/live.png
     
     printf "              \r"
 done
