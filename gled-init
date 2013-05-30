@@ -7,7 +7,7 @@ c=2                        # c - columns of sheets
 w=1240                     # docsize
 h=1754                     # A4 - 300dpi = 2480x3508 | 150 dpi = 2480x3508
 
-folders=( archives inbox printers steps trash )
+folders=( archives inbox printers steps trash captures )
 printers=( 116 conciergerie tanguy g-u-i)
 dir=gled.new
 
