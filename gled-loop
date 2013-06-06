@@ -3,7 +3,8 @@
 
 while true; do
     gled
-    
+    gled-print ~/Dropbox/dcfvg-gled/gled.conciergerie/printers/conciergerie
+
     now=$(date +"%y.%m.%d-%H.%M")
     capture=${now:0:13}
     capturepath=~/Dropbox/dcfvg-gled/gled.conciergerie/captures
@@ -17,12 +18,11 @@ while true; do
     
     # video capture 
     imagesnap $capturepath/$capture.jpg
-	  jpegoptim $capturepath/$capture.jpg
+	jpegoptim $capturepath/$capture.jpg
 	
     rm $capturepath/live.jpg
     cp $capturepath/$capture.jpg $capturepath/live.jpg
     
-    # print file
     gled-print ~/Dropbox/dcfvg-gled/gled.conciergerie/printers/conciergerie
     
     printf "              \r"
