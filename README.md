@@ -1,6 +1,8 @@
 glisser éditer
 ====
 
+![photo](https://pbs.twimg.com/media/BMyunYMCIAApryD.jpg)
+
 Un système de synchronisation d’affichages distants.
 
 1. un dossier partagé est alimenté par les participants 
