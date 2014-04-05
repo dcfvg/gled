@@ -9,6 +9,7 @@ Chacun de participants doit alors accrocher le document fraichement imprimé pou
 
 Plusieurs copie de l'affichage sont disséminés à Paris, Motte-Servolex et Rotterdam.
 
+Détails : https://docs.google.com/document/d/188qPLnTLVzWXMK4c0Owhvmmegc_JpdCvBGQg9J84Hyc/pub
 
 
 ![photo](https://pbs.twimg.com/media/BMyunYMCIAApryD.jpg)
